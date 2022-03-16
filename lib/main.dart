@@ -15,8 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
+    return  const MaterialApp(
       home: BottomNavigation(),
     );
   }
@@ -32,7 +31,7 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
+     HomeScreen(),
     const SearchScreen(),
     const ProfileScreen(),
   ];

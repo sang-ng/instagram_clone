@@ -3,20 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/utils/story_circle.dart';
 import 'package:instagram_clone/utils/user_posts.dart';
 
-class HomeScreen extends StatelessWidget {
-  final List users = [
-    'obama',
-    'someguy',
-    'Son goku',
-    'Prince',
-    'Shigo',
-    'obama',
-    'someguy',
-    'Son goku',
-    'Prince',
-    'Shigo'
-  ];
+import '../utils/sample_data.dart';
 
+class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -55,7 +44,7 @@ class HomeScreen extends StatelessWidget {
     }
 
     Widget _storySection = SizedBox(
-      height: 90,
+      height: 120,
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
@@ -64,7 +53,7 @@ class HomeScreen extends StatelessWidget {
         },
         itemCount: users.length,
         itemBuilder: (BuildContext context, int index) {
-          return StoryCircle(text: users[index]);
+          return StoryCircle(user: users[index]);
         },
       ),
     );
@@ -83,7 +72,7 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               physics: BouncingScrollPhysics(),
-              itemBuilder: (context, index) => UserPosts(name: users[index]),
+              itemBuilder: (context, index) => UserPosts(user: users[index]),
               itemCount: users.length,
             ),
           )

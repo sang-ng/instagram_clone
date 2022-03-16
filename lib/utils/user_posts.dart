@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class UserPosts extends StatelessWidget {
-  final String name;
+import '../models/user.dart';
 
-  const UserPosts({Key? key, required this.name}) : super(key: key);
+class UserPosts extends StatelessWidget {
+  final User user;
+
+  const UserPosts({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,12 @@ class UserPosts extends StatelessWidget {
             children: [
               /*profile photo*/
               Container(
-                width: 40,
-                height: 40,
-                decoration: const BoxDecoration(
-                    color: Colors.grey, shape: BoxShape.circle),
-              ),
+                  width: 40.0,
+                  height: 40.0,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.fill, image: NetworkImage(user.image)))),
               const SizedBox(
                 width: 10,
               ),
@@ -31,7 +34,7 @@ class UserPosts extends StatelessWidget {
               /*Name*/
               Expanded(
                 child: Text(
-                  name,
+                  user.name,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
