@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final ThemeData themeData = Theme.of(context);
-    const double padding = 15;
+    const double padding = 8;
     const sidePadding = EdgeInsets.symmetric(horizontal: 25);
 
     AppBar _buildAppBar() {
@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
     }
 
     Widget _storySection = SizedBox(
-      height: 120,
+      height: 110,
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
