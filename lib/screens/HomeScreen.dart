@@ -80,7 +80,13 @@ class HomeScreen extends StatelessWidget {
           const Divider(
             height: 2,
           ),
-          UserPosts(name: 'kotate',)
+          Expanded(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemBuilder: (context, index) => UserPosts(name: users[index]),
+              itemCount: users.length,
+            ),
+          )
         ],
       );
     }
