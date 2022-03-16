@@ -43,18 +43,21 @@ class HomeScreen extends StatelessWidget {
       );
     }
 
-    Widget _storySection = SizedBox(
-      height: 110,
-      child: ListView.separated(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(width: 10);
-        },
-        itemCount: users.length,
-        itemBuilder: (BuildContext context, int index) {
-          return StoryCircle(user: users[index]);
-        },
+    Widget _storySection = Padding(
+      padding: EdgeInsets.only(left: 8.0),
+      child: SizedBox(
+        height: 110,
+        child: ListView.separated(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(width: 10);
+          },
+          itemCount: users.length,
+          itemBuilder: (BuildContext context, int index) {
+            return StoryCircle(user: users[index]);
+          },
+        ),
       ),
     );
 

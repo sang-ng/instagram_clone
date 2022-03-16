@@ -3,5 +3,5 @@ class User {
   final String username;
   final String image;
 
-  User(this.name, this.username, this.image);
+  User({required this.name, required this.username, required this.image});
 }

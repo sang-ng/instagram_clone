@@ -10,19 +10,22 @@ class StoryCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(8.0),
+        width: 70.0,
+        height: 70.0,
         child: Column(children: [
-          Container(
-              width: 70.0,
-              height: 70.0,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      fit: BoxFit.fill, image: NetworkImage(user.image)))),
+          Expanded(
+            flex: 2,
+            child: Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.fill, image: NetworkImage(user.image)))),
+          ),
           const SizedBox(
             height: 10,
           ),
-          Flexible(
+          Expanded(
+            flex: 1,
             child: SizedBox(
               width: 80,
               child: Center(
