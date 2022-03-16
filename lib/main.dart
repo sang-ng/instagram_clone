@@ -33,8 +33,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    SearchScreen(),
-    ProfileScreen(),
+    const SearchScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
