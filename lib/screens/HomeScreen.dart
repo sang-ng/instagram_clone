@@ -1,0 +1,93 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:instagram_clone/utils/story_circle.dart';
+import 'package:instagram_clone/utils/user_posts.dart';
+
+import '../utils/sample_data.dart';
+
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final ThemeData themeData = Theme.of(context);
+    const double padding = 8;
+    const sidePadding = EdgeInsets.symmetric(horizontal: 25);
+
+    AppBar _buildAppBar() {
+      return AppBar(
+        title: const Text(
+          'Instagram',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add_box_outlined),
+            onPressed: () {},
+            color: Colors.black,
+          ),
+          IconButton(
+            icon: Icon(Icons.favorite_border_outlined),
+            onPressed: () {},
+            color: Colors.black,
+          ),
+          IconButton(
+            icon: Icon(Icons.message_outlined),
+            onPressed: () {},
+            color: Colors.black,
+          )
+        ],
+      );
+    }
+
+    Widget _storySection = Padding(
+      padding: EdgeInsets.only(left: 8.0),
+      child: SizedBox(
+        height: 110,
+        child: ListView.separated(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(width: 10);
+          },
+          itemCount: users.length,
+          itemBuilder: (BuildContext context, int index) {
+            return StoryCircle(user: users[index]);
+          },
+        ),
+      ),
+    );
+
+    Widget _buildBody() {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: padding,
+          ),
+          _storySection,
+          const Divider(
+            height: 2,
+          ),
+          Expanded(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemBuilder: (context, index) => UserPosts(user: users[index]),
+              itemCount: users.length,
+            ),
+          )
+        ],
+      );
+    }
+
+    return SafeArea(
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: _buildBody(),
+      ),
+    );
+  }
+}
